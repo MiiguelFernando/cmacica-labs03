@@ -8,9 +8,11 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import pe.cmacica.labs.labs03.controller.dto.ClientesDTO;
 import pe.cmacica.labs.labs03.dominio.Cliente;
 import pe.cmacica.labs.labs03.service.ClienteService;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,9 +46,18 @@ public class ClienteController {
             return ResponseEntity.badRequest().build();
         }
 
+        clienteService.insertar(cliente);
+
         LOGGER.debug("{}",cliente.getId());
         LOGGER.debug(cliente.getNombre());
-        return ResponseEntity.accepted().build();
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/batch")
+    public HttpEntity<String> guardar(@Valid @RequestBody ClientesDTO /*List<Cliente>*/ clientes){
+
+        clienteService.insertar(clientes.getClientes());
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}")

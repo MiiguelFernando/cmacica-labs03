@@ -6,7 +6,7 @@ logging.level:
   pe.cmacica.labs.labs03: DEBUG
 
 
-#Conexión bd
+#Conexion bd
 spring.datasource.url: jdbc:mysql://localhost:3307/customersdb?useSSL=false
 spring.datasource.username: user
 spring.datasource.password: password
