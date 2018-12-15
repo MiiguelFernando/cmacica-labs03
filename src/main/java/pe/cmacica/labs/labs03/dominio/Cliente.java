@@ -1,11 +1,35 @@
 package pe.cmacica.labs.labs03.dominio;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 public class Cliente {
 
     private int id;
+
+    @NotNull
+    @Min(18)
+    @Max(100)
+    private int edad;
+
+    @Pattern(regexp=".+@.+\\.[a-z]+")
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
 
     public int getId() {
         return id;
@@ -24,6 +48,7 @@ public class Cliente {
     }
 
     @NotNull
+    @Size(min=5, max=100)
     private String nombre;
 
     public String getPaterno() {
@@ -43,7 +68,10 @@ public class Cliente {
     }
 
     @NotNull
+    @Size(min=5, max=100)
     private String paterno;
+
     @NotNull
+    @Size(min=5, max=100)
     private String materno;
 }

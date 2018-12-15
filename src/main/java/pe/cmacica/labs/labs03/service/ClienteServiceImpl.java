@@ -46,9 +46,9 @@ public class ClienteServiceImpl implements ClienteService {
 
             clienteRepository.insertar(cliente);
 
-            if (cliente.getPaterno().equalsIgnoreCase("ZEGARRA")){
+            /*if (cliente.getPaterno().equalsIgnoreCase("ZEGARRA")){
                 throw new RuntimeException();
-            }
+            }*/
         });
     }
 

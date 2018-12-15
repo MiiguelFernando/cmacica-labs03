@@ -5,4 +5,6 @@ CREATE TABLE cliente (
                       nombres VARCHAR(100) NOT NULL,
                       paterno VARCHAR(100) NOT NULL,
                       materno VARCHAR(100) NOT NULL,
+                      edad INT NOT NULL,
+                      email VARCHAR(100) NOT NULL,
                       PRIMARY KEY (id));

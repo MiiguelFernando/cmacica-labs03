@@ -40,7 +40,7 @@ public class ClienteController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ClienteController.class);
     @PostMapping
-    public HttpEntity<String> guardar(@RequestBody Cliente cliente){
+    public HttpEntity<String> guardar(@Valid @RequestBody Cliente cliente){
 
         if(StringUtils.isBlank(cliente.getNombre())){
             return ResponseEntity.badRequest().build();
@@ -62,7 +62,7 @@ public class ClienteController {
 
     @PutMapping("/{id}")
     public HttpEntity<String> actualizar(@PathVariable("id") int id,
-                                         @RequestBody Cliente cliente){
+                                         @Valid @RequestBody Cliente cliente){
 
         cliente.setId(id);
         if (clienteService.actualizar(cliente) == 0){

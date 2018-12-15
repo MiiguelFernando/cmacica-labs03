@@ -29,6 +29,8 @@ public class ClienteRepositoryImpl implements ClienteRepository {
             cliente.setNombre(rs.getString("nombres"));
             cliente.setPaterno(rs.getString("paterno"));
             cliente.setMaterno(rs.getString("materno"));
+            cliente.setEdad(rs.getInt("edad"));
+            cliente.setEmail(rs.getString("email"));
             return cliente;
         }
     }
@@ -36,7 +38,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     @Override
     public List<Cliente> listar() {
 
-        return jdbcTemplate.query("select id,nombres,paterno,materno from cliente", new ClienteMapper());
+        return jdbcTemplate.query("select id,nombres,paterno,materno,edad,email from cliente", new ClienteMapper());
 
         /*List<Cliente> list = new ArrayList<>();
         for (int i=0; i<=10; i++){
@@ -52,7 +54,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     @Override
     public Cliente listar(int id) {
 
-        return jdbcTemplate.queryForObject("select id,nombres,paterno,materno from cliente where id=?",
+        return jdbcTemplate.queryForObject("select id,nombres,paterno,materno,edad,email from cliente where id=?",
                 new Object[]{id},
                 new ClienteMapper());
 
@@ -79,7 +81,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     @Override
     public void insertar(Cliente cliente) {
 
-        String SQL_INSERT = "INSERT INTO cliente(nombres,paterno,materno) values(?,?,?)";
+        String SQL_INSERT = "INSERT INTO cliente(nombres,paterno,materno,edad,email) values(?,?,?,?,?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(
@@ -91,6 +93,8 @@ public class ClienteRepositoryImpl implements ClienteRepository {
                         ps.setString(1, cliente.getNombre());
                         ps.setString(2, cliente.getPaterno());
                         ps.setString(3, cliente.getMaterno());
+                        ps.setInt(4, cliente.getEdad());
+                        ps.setString(5, cliente.getEmail());
                         return ps;
                     }
                 }, keyHolder);

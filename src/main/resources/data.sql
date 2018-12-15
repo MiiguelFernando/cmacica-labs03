@@ -1,3 +1,3 @@
 
-INSERT INTO cliente(nombres,paterno,materno)VALUES('Manuel','Zegarra','Sánchez');
-INSERT INTO cliente(nombres,paterno,materno)VALUES('Nicole','Zegarra','Monzón');
+INSERT INTO cliente(nombres,paterno,materno,edad,email)VALUES('Manuel','Zegarra','Sánchez',20,'email@email.com');
+INSERT INTO cliente(nombres,paterno,materno,edad,email)VALUES('Nicole','Zegarra','Monzón',18,'datos@correo.com');
